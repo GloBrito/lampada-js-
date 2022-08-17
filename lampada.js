@@ -9,6 +9,10 @@ function isLampBroken() {
 
 function lampOn() {
   //FUNÇÃO QUE MOSTRA A LÂMPADA LIGADA
+  if (turnOff.disabled && turnOn.disabled) {
+    lamp.src = "./img/quebrada.jpg";
+    return;
+  }
   if (!isLampBroken()) {
     //Se a lâmpada não estiver quebrada (!) troca para ligada
     lamp.src = "./img/ligada.jpg";
@@ -23,13 +27,19 @@ function lampOff() {
 }
 
 function lampOff() {
+  if (turnOff.disabled && turnOn.disabled) {
+    lamp.src = "./img/quebrada.jpg";
+    return;
+  }
   //FUNÇÃO QUE MOSTRA A LÂMPADA DESLIGADA
   lamp.src = "./img/desligada.jpg";
 }
 
 function lampBroken() {
   //Função que mostra a lâmapda quebrada após os dois cliques.
-  lamp.src = "./img/quebrada.jpg";
+
+  turnOff.disabled = true;
+  turnOn.disabled = true;
 }
 // As funções foram criadas fora da chamada do evento para serem reaproveitadas.
 
